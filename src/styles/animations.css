@@ -1,0 +1,116 @@
+/* ===== Bounce Dance ===== */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-3deg) scale(1); }
+  25%       { transform: translateY(-30px) rotate(3deg) scale(1.05); }
+  50%       { transform: translateY(-15px) rotate(-2deg) scale(1.02); }
+  75%       { transform: translateY(-25px) rotate(2deg) scale(1.04); }
+}
+
+/* ===== Spin Dance ===== */
+@keyframes spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(90deg) scale(1.1); }
+  50%  { transform: rotate(180deg) scale(1); }
+  75%  { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* ===== Wiggle Dance ===== */
+@keyframes wiggle {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  15%       { transform: translateX(-18px) rotate(-8deg); }
+  30%       { transform: translateX(18px) rotate(8deg); }
+  45%       { transform: translateX(-12px) rotate(-5deg); }
+  60%       { transform: translateX(12px) rotate(5deg); }
+  75%       { transform: translateX(-6px) rotate(-3deg); }
+  90%       { transform: translateX(6px) rotate(3deg); }
+}
+
+/* ===== Jump Dance ===== */
+@keyframes jump {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  10%       { transform: translateY(0) scaleY(0.9) scaleX(1.1); }
+  40%       { transform: translateY(-60px) scaleY(1.1) scaleX(0.95); }
+  60%       { transform: translateY(-60px) scaleY(1.1) scaleX(0.95); }
+  85%       { transform: translateY(0) scaleY(0.85) scaleX(1.12); }
+}
+
+/* ===== Idle (paused) ===== */
+@keyframes idle {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* ===== Shadow pulse ===== */
+@keyframes shadowPulse {
+  0%, 100% { transform: scaleX(1); opacity: 0.3; }
+  50%       { transform: scaleX(0.6); opacity: 0.15; }
+}
+
+/* ===== Music notes float ===== */
+@keyframes floatNote {
+  0%   { transform: translateY(0) scale(1); opacity: 0; }
+  20%  { opacity: 1; }
+  80%  { opacity: 0.8; }
+  100% { transform: translateY(-80px) scale(1.4); opacity: 0; }
+}
+
+/* ===== Applied classes ===== */
+.dancing-cat-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cat-container {
+  will-change: transform;
+  display: inline-block;
+  transform-origin: center bottom;
+  line-height: 0;
+}
+
+.cat-image {
+  width: clamp(140px, 35vw, 240px);
+  height: auto;
+  display: block;
+}
+
+.dance-bounce { animation: bounce 0.8s ease-in-out infinite; }
+.dance-spin   { animation: spin 1.2s linear infinite; }
+.dance-wiggle { animation: wiggle 0.9s ease-in-out infinite; }
+.dance-jump   { animation: jump 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; }
+.dance-idle   { animation: idle 2.5s ease-in-out infinite; }
+
+.shadow {
+  width: 120px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 4px;
+}
+.shadow.shadow-active {
+  animation: shadowPulse 0.8s ease-in-out infinite;
+}
+
+/* ===== Music notes ===== */
+.music-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.note {
+  position: absolute;
+  font-size: 1.6rem;
+  animation: floatNote 1.4s ease-out infinite;
+  color: #FF69B4;
+}
+.note-1 { left: 10%; top: 50%; animation-delay: 0s; }
+.note-2 { left: 75%; top: 40%; animation-delay: 0.35s; color: #9B59B6; }
+.note-3 { left: 20%; top: 30%; animation-delay: 0.7s; color: #3498DB; }
+.note-4 { left: 65%; top: 55%; animation-delay: 1.05s; color: #E74C3C; }
